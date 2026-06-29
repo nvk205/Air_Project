@@ -1,0 +1,18 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+}
+
+/* Các màu trạng thái AQI */
+.aqi-good { background-color: #28a745 !important; }
+.aqi-moderate { background-color: #ffc107 !important; color: #000 !important; }
+.aqi-unhealthy { background-color: #dc3545 !important; }
+
+canvas {
+    max-height: 250px;
+}

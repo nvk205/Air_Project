@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">ESP32 Air Monitor</a>
+            <div class="d-flex gap-2">
+                <a href="/system" class="btn btn-outline-info btn-sm">System Info</a>
+                <a href="/log" class="btn btn-outline-success btn-sm">SD Card Logs</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 id="aqi-status" class="p-3 rounded fw-bold text-white bg-secondary">Đang tải dữ liệu...</h2>
+                <p class="text-muted">Cập nhật lần cuối: <span id="rtc-time">--:--:--</span> | Trạng thái SD: <span id="sd-status">Đang kiểm tra...</span></p>
+            </div>
+        </div>
+
+        <div class="row text-center mb-4">
+            <div class="col-6 col-md-3">
+                <canvas id="gaugeTemp"></canvas>
+                <h5 class="mt-2"><span id="val-temp">0</span> °C</h5>
+            </div>
+            <div class="col-6 col-md-3">
+                <canvas id="gaugeHumi"></canvas>
+                <h5 class="mt-2"><span id="val-humi">0</span> %</h5>
+            </div>
+            <div class="col-6 col-md-3">
+                <canvas id="gaugePM25"></canvas>
+                <h5 class="mt-2"><span id="val-pm25">0</span> µg/m³</h5>
+            </div>
+            <div class="col-6 col-md-3">
+                <canvas id="gaugeCO2"></canvas>
+                <h5 class="mt-2"><span id="val-co2">0</span> ppm</h5>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-lg-4 mb-3">
+                <div class="card p-3 h-100">
+                    <h5 class="card-title">Temperature Real-time</h5>
+                    <canvas id="chartTemp"></canvas>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-3">
+                <div class="card p-3 h-100">
+                    <h5 class="card-title">Humidity Real-time</h5>
+                    <canvas id="chartHumi"></canvas>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="card p-3 h-100">
+                    <h5 class="card-title">PM2.5 Real-time</h5>
+                    <canvas id="chartPM"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4 text-center">
+            <div class="col-md-3 col-6 mb-2">
+                <div class="card p-2">Khí Gas (Rs)<br><b id="val-gas">0</b> kΩ</div>
+            </div>
+            <div class="col-md-3 col-6 mb-2">
+                <div class="card p-2">Áp suất<br><b id="val-pres">0</b> hPa</div>
+            </div>
+            <div class="col-md-3 col-6 mb-2">
+                <div class="card p-2">PM1.0<br><b id="val-pm1">0</b> µg/m³</div>
+            </div>
+            <div class="col-md-3 col-6 mb-2">
+                <div class="card p-2">PM10<br><b id="val-pm10">0</b> µg/m³</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
